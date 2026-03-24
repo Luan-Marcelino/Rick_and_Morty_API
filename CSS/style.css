@@ -119,3 +119,15 @@ footer {
 .fa-circle {
     font-size: 10px;
 }
+
+.btn-tras-frente {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    margin-top: 20px;
+
+}
+
+.btn-tras-frente button {
+    width: 100%;
+}

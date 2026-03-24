@@ -11,9 +11,9 @@ Também é possível pesquisar um nome de personagem na barra de pesquisa, para 
 
 **Passos Concluidos**
 
-- [x] Design Inicial da primeira página
-- [x] Consumir a API
-- [ ] Fazer a barra de pesquisa funcionar
+:white_check_mark: Design Inicial da primeira página <br/>
+:white_check_mark: Consumir a API <br/>
+:white_large_square: Fazer a barra de pesquisa funcionar <br/>
 
 ## Esquema das páginas
 

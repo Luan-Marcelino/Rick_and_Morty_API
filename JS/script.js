@@ -104,7 +104,7 @@ async function imprimirInfos() {
 }
 
 //Gerando os cards
-for (let i = 101; i >= 0; i--){
+for (let i = 15; i >= 0; i--){
     criandoCards();
 }
 

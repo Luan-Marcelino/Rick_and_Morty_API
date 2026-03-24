@@ -8,8 +8,8 @@ const card_nome = document.querySelector('.card-nome');
 const card_local = document.querySelector('.card-local');
 const card_status = document.querySelector('.card-status');
 
-function chamarAPI(value) {
-    const endpoint = `https://rickandmortyapi.com/api/character/${value}`;
+function chamarAPI() {
+    const endpoint = `https://rickandmortyapi.com/api/character/`;
     const apiRequest = fetch(endpoint).then((res) => res.json().then((elem) => {
         //console.log(elem);
         return elem;
@@ -56,55 +56,48 @@ function criandoCards() {
 }
 
 async function imprimirInfos() {
+    let resultado = await chamarAPI();
+        
     const todasImg = document.querySelectorAll('.card-img');
-    todasImg.forEach(async (elem, i) => {
-        let resultado = await chamarAPI(i+1);
-        resultado.image.fetchPriority = "high";
-        elem.src = resultado.image;
+    todasImg.forEach((elem, i) => { 
+        elem.src = resultado.results[i].image;
     });
 
     const todosNome = document.querySelectorAll('.card-nome');
-    todosNome.forEach(async (elem, i) => {
-        let resultado = await chamarAPI(i+1);
-        elem.innerHTML = resultado.name;        
+    todosNome.forEach((elem, i) => {
+        elem.innerHTML = resultado.results[i].name;        
     });
 
     const todosLocal = document.querySelectorAll('.card-local');
-    todosLocal.forEach(async (elem, i) => {
-        let resultado = await chamarAPI(i+1);
-        elem.innerHTML = resultado.origin.name;
+    todosLocal.forEach((elem, i) => {
+        elem.innerHTML = resultado.results[i].origin.name;
     });
 
     const todosStatus = document.querySelectorAll('.card-status');
-    todosStatus.forEach(async (elem, i) => {
-        let resultado = await chamarAPI(i+1);
-        elem.innerHTML = resultado.status;
+    todosStatus.forEach((elem, i) => {
+        elem.innerHTML = resultado.results[i].status;
 
     });
     
     //Trocando a cor dos circulos de status
     let simbolo = document.querySelectorAll('.fa-circle');
     simbolo.forEach(async (sim, i) => {
-    let resultado = await chamarAPI(i + 1);
 
-    switch(resultado.status) {
+    switch(resultado.results[i].status) {
         case "Alive":
-            
             sim.style.color = "green";
         break;
         case "Dead":
-            
             sim.style.color = "red";
         break;
     default:
         sim.style.color = "gray";
     }
 })
-
 }
 
 //Gerando os cards
-for (let i = 15; i >= 0; i--){
+for (let i = 18; i >= 0; i--){
     criandoCards();
 }
 

@@ -10,8 +10,7 @@ function chamarAPI(value) {
     const apiRequest = fetch(endpoint).then((res) => res.json().then((elem) => {
         //console.log(elem);
         return elem;
-        
-        
+
     }));
 
     return apiRequest;
@@ -22,8 +21,12 @@ function criandoCards() {
     divSection.appendChild(divCard);
     divCard.classList.add('card');    
 
+    const container_img = document.createElement('div');
+    divCard.appendChild(container_img);
+    container_img.classList.add('container-img');
+
     const img_cards = document.createElement('img');
-    divCard.appendChild(img_cards);
+    container_img.appendChild(img_cards);
     img_cards.classList.add('card-img');
     //let resultado = await chamarAPI(1);
 
@@ -91,7 +94,7 @@ async function imprimirInfos() {
             sim.style.color = "red";
         break;
     default:
-        sim.style.color = "black";
+        sim.style.color = "gray";
     }
 })
 

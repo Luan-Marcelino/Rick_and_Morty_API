@@ -127,15 +127,23 @@ window.addEventListener('load', () => {
             contadorPagina++;
             imprimirInfos(contadorPagina);
         }
+        voltarParaCima();
     })
     
     btnAnterior.addEventListener('click', () => {
         if(contadorPagina > 1) {
             contadorPagina--;
             imprimirInfos(contadorPagina);
-            
         }
+        voltarParaCima();
     });
+
+    function voltarParaCima() {
+        window.scrollTo( {
+            top: 0,
+            behavior: 'smooth'
+        })
+    }
 
     //Basicamente executando o código todo
     imprimirInfos(contadorPagina);

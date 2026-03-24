@@ -1,3 +1,6 @@
+window.addEventListener('load', () => {
+
+
 const input = document.querySelector('input');
 const divSection = document.querySelector('.section-cards');
 const card_img = document.querySelector('.card-img');
@@ -107,3 +110,4 @@ for (let i = 101; i >= 0; i--){
 
 imprimirInfos();
 
+});

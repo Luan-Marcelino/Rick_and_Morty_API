@@ -101,16 +101,24 @@ window.addEventListener('load', () => {
         
     })
     }
+    let contadorPagina = 1;
 
     //Gerando os cards
     function gerarCards() {
-        for (let i = 19; i >= 0; i--){
-        criandoCards();
+        if(contadorPagina === totalPaginas) {//A ultima página só tem 6 itens
+            for (let i = 5; i >= 0; i--){
+            criandoCards();
+            } 
+        } else {
+            for (let i = 19; i >= 0; i--){
+            criandoCards();
+            }
         }
+
     }
 
     //Avançar ou Retroceder as paginas
-    let contadorPagina = 1;
+   
     const btnAnterior = document.querySelector('.anterior');
     const btnProximo = document.querySelector('.prox');
 

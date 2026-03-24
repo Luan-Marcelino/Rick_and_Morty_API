@@ -31,7 +31,6 @@ function criandoCards() {
     const img_cards = document.createElement('img');
     container_img.appendChild(img_cards);
     img_cards.classList.add('card-img');
-    //let resultado = await chamarAPI(1);
 
     const text_name_cards = document.createElement('p');
     divCard.appendChild(text_name_cards);
@@ -60,6 +59,7 @@ async function imprimirInfos() {
     const todasImg = document.querySelectorAll('.card-img');
     todasImg.forEach(async (elem, i) => {
         let resultado = await chamarAPI(i+1);
+        resultado.image.fetchPriority = "high";
         elem.src = resultado.image;
     });
 

@@ -1,6 +1,8 @@
 # Consumindo uma API de Rick and Morty
 **API Usada**: https://rickandmortyapi.com/
 
+**Link do Site**: https://rick-and-morty-api-virid-nu.vercel.app/
+
 O objetivo desse projeto é consumir uma API e manipular os dados na DOM, mostrando as informações iniciais como:
 
 * **Nome**

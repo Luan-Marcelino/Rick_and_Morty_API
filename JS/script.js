@@ -4,9 +4,14 @@ window.addEventListener('load', () => {
     let totalPaginas;
 
     const divSection = document.querySelector('.section-cards');
+    const input_pesquisa = document.querySelector('.input-pesquisa');
+    
+    function chamarAPI(value, nome) {
+        let endpoint = `https://rickandmortyapi.com/api/character/?page=${value}`;
 
-    function chamarAPI(value) {
-        const endpoint = `https://rickandmortyapi.com/api/character/?page=${value}`;
+        if(nome) { 
+            endpoint += `&name=${nome}`;//se o parametro nome não for '', ele vai adicionar &name=nome no final do endpoint, assim como fala na documentação
+        }
         const apiRequest = fetch(endpoint).then((res) => res.json().then((elem) => {
             console.log(endpoint);
             return elem;
@@ -50,10 +55,10 @@ window.addEventListener('load', () => {
         trocarCorStatus(simbolo, resultadoAPI.status);
     }
 
-    async function imprimirInfos(contadorPag) {
+    async function imprimirInfos(contadorPag, nome = '') {//defini o parametro nome como '' para o caso o parametro não ser colocado na função
         divSection.innerHTML = ''; //Limpando a sessão para criar outra;
 
-        const resultado = await chamarAPI(contadorPag);
+        const resultado = await chamarAPI(contadorPag, nome);
         resultado.results.forEach(res => criarCards(res));
         
         totalPaginas = resultado.info.pages; //Pega a informação de quantas paginas tem na API
@@ -70,7 +75,7 @@ window.addEventListener('load', () => {
     btnProximo.addEventListener('click', () => {
         if (contadorPagina < totalPaginas) {
             contadorPagina++;
-            imprimirInfos(contadorPagina);
+            imprimirInfos(contadorPagina, input_pesquisa.value.trim());
         }
         voltarParaCima();
     })
@@ -78,7 +83,7 @@ window.addEventListener('load', () => {
     btnAnterior.addEventListener('click', () => {
         if(contadorPagina > 1) {
             contadorPagina--;
-            imprimirInfos(contadorPagina);
+            imprimirInfos(contadorPagina, input_pesquisa.value.trim());
         }
         voltarParaCima();
     });
@@ -93,4 +98,12 @@ window.addEventListener('load', () => {
     //Basicamente executando o código todo
     imprimirInfos(contadorPagina);
 
+    //pesquisando com o ENTER
+    input_pesquisa.addEventListener('keyup', (e) => {
+        e.preventDefault();
+        if(e.key === 'Enter') {
+            imprimirInfos(contadorPagina, input_pesquisa.value.trim());//Coloca um nome para fazer a pesquisa do personagem
+        }
+
+    })
 });

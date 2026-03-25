@@ -23,3 +23,5 @@ Também é possível pesquisar um nome de personagem na barra de pesquisa, para 
 
 **Página Inicial :**
 ![Imagem Inicial.](Assets/img-exemplo-inicial.png)
+![**Quando realiza a pesquisa**](Assets/img-exemplo-pesquisa.png)
+![**Quantidade de páginas do resultado**](Assets/img-quantidade-de-paginas.png)

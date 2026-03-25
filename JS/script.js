@@ -16,109 +16,54 @@ window.addEventListener('load', () => {
         return apiRequest;
     }
 
-    function criandoCards() {    
-        const divCard = document.createElement('div');
-        divSection.appendChild(divCard);
-        divCard.classList.add('card');    
-
-        const container_img = document.createElement('div');
-        divCard.appendChild(container_img);
-        container_img.classList.add('container-img');
-
-        const img_cards = document.createElement('img');
-        container_img.appendChild(img_cards);
-        img_cards.classList.add('card-img');
-
-        const text_name_cards = document.createElement('p');
-        divCard.appendChild(text_name_cards);
-        text_name_cards.classList.add('card-nome');
-
-        const text_local_cards = document.createElement('p');
-        divCard.appendChild(text_local_cards);
-        text_local_cards.classList.add('card-local');
-
-        const divStatus = document.createElement('div');
-        divCard.appendChild(divStatus);
-        divStatus.classList.add('campo-status');
-        
-        const simbolo_status = document.createElement('i');
-        divStatus.appendChild(simbolo_status);
-        simbolo_status.classList.add('fa-solid');
-        simbolo_status.classList.add('fa-circle');
-        
-        const text_status_cards = document.createElement('p');
-        divStatus.appendChild(text_status_cards);
-        text_status_cards.classList.add('card-status');  
-    
-    }
-
-    async function imprimirInfos(value) {
-        divSection.innerHTML = '';//Limpando a sessão para criar outra
-        gerarCards();
-        
-        let resultado = await chamarAPI(value);
-        
-        totalPaginas = resultado.info.pages;//Pega a informação de quantas paginas tem
-        
-        const todasImg = document.querySelectorAll('.card-img');
-        todasImg.forEach((elem, i) => { 
-            elem.src = resultado.results[i].image;
-        });
-
-        const todosNome = document.querySelectorAll('.card-nome');
-        todosNome.forEach((elem, i) => {
-            elem.innerHTML = resultado.results[i].name;        
-        });
-
-        const todosLocal = document.querySelectorAll('.card-local');
-        todosLocal.forEach((elem, i) => {
-            elem.innerHTML = resultado.results[i].origin.name;
-        });
-
-        const todosStatus = document.querySelectorAll('.card-status');
-        todosStatus.forEach((elem, i) => {
-            elem.innerHTML = resultado.results[i].status;
-
-        });
-        
-        //Trocando a cor dos circulos de status
-        let simbolo = document.querySelectorAll('.fa-circle');
-        simbolo.forEach((sim, i) => {
-
-        switch(resultado.results[i].status) {
+    function trocarCorStatus(sim, resultadoAPIstatus) {
+        switch(resultadoAPIstatus) {
             case "Alive":
-                sim.style.color = "green";
+                sim.style.color = 'green';
             break;
             case "Dead":
-                sim.style.color = "red";
+                sim.style.color = 'red';
             break;
-        default:
-            sim.style.color = "gray";
+            default:
+                sim.style.color = 'gray';    
         }
+    }
 
-        //Mostra a pagina atual e o total de paginas
-        document.querySelector('.total-paginas').textContent = `Página ${contadorPagina} de ${totalPaginas}`;
+    function criarCards(resultadoAPI) {
+        const divCard = document.createElement('div');
+        divCard.classList.add('card')
+        divSection.appendChild(divCard);
+
+        divCard.innerHTML = `
+            <div class="container-img">
+                <img class="card-img" src="${resultadoAPI.image}" alt="Imagem do Personagem">
+            </div>                   
+            <p class="card-nome">${resultadoAPI.name}</p>
+            <p class="card-local">${resultadoAPI.origin.name}</p>
+            <div class="campo-status">
+                <i class="fa-solid fa-circle"></i>
+                <p class="card-status">${resultadoAPI.status}</p>
+            </div>        
+        `
+        //Mudando a cor do circulo de status
+        const simbolo = divCard.querySelector('.fa-circle');//Vai pegar pela classe na divCard
+        trocarCorStatus(simbolo, resultadoAPI.status);
+    }
+
+    async function imprimirInfos(contadorPag) {
+        divSection.innerHTML = ''; //Limpando a sessão para criar outra;
+
+        const resultado = await chamarAPI(contadorPag);
+        resultado.results.forEach(res => criarCards(res));
         
-    })
+        totalPaginas = resultado.info.pages; //Pega a informação de quantas paginas tem na API
+        document.querySelector('.total-paginas').textContent = `Página ${contadorPagina} de ${totalPaginas}`; //Mostra em que pagina está e a quantidade de páginas.
     }
-    let contadorPagina = 1;
 
-    //Gerando os cards
-    function gerarCards() {
-        if(contadorPagina === totalPaginas) {//A ultima página só tem 6 itens
-            for (let i = 5; i >= 0; i--){
-            criandoCards();
-            } 
-        } else {
-            for (let i = 19; i >= 0; i--){
-            criandoCards();
-            }
-        }
-
-    }
 
     //Avançar ou Retroceder as paginas
-   
+    let contadorPagina = 1; 
+
     const btnAnterior = document.querySelector('.anterior');
     const btnProximo = document.querySelector('.prox');
 
@@ -147,6 +92,5 @@ window.addEventListener('load', () => {
 
     //Basicamente executando o código todo
     imprimirInfos(contadorPagina);
-
 
 });

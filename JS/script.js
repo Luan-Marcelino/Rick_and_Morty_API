@@ -5,7 +5,8 @@ window.addEventListener('load', () => {
 
     const divSection = document.querySelector('.section-cards');
     const input_pesquisa = document.querySelector('.input-pesquisa');
-    
+    const btn_pesquisar = document.querySelector('.btn-pesquisa');
+
     function chamarAPI(value, nome) {
         let endpoint = `https://rickandmortyapi.com/api/character/?page=${value}`;
 
@@ -97,6 +98,11 @@ window.addEventListener('load', () => {
 
     //Basicamente executando o código todo
     imprimirInfos(contadorPagina);
+
+    btn_pesquisar.addEventListener('click', (e) => {
+        e.preventDefault();
+        imprimirInfos(contadorPagina, input_pesquisa.value.trim());//Coloca um nome para fazer a pesquisa do personagem
+    })
 
     //pesquisando com o ENTER
     input_pesquisa.addEventListener('keyup', (e) => {

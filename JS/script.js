@@ -7,19 +7,28 @@ window.addEventListener('load', () => {
     const input_pesquisa = document.querySelector('.input-pesquisa');
     const btn_pesquisar = document.querySelector('.btn-pesquisa');
 
-    function chamarAPI(value, nome) {
-        let endpoint = `https://rickandmortyapi.com/api/character/?page=${value}`;
+    async function chamarAPI(value, nome) {
+        try {
+            let endpoint = `https://rickandmortyapi.com/api/character/?page=${value}`;
+            if(nome) { 
+                endpoint += `&name=${nome}`;//se o parametro nome não for '', ele vai adicionar &name=nome no final do endpoint, assim como fala na documentação
+            }
 
-        if(nome) { 
-            endpoint += `&name=${nome}`;//se o parametro nome não for '', ele vai adicionar &name=nome no final do endpoint, assim como fala na documentação
+            const res = await fetch(endpoint);
+
+            //No caso de ter algum erro, ele vai lançar um novo erro e ir direto para o catch
+            if (!res.ok) { 
+                throw new Error("Personagem não localizado.")
+            }
+
+            const data = await res.json();
+            return data;
+
+        } catch (erro) {
+            divSection.innerHTML = `<p>Nenhum personagem encontrado.</p>`
+            return null;
         }
-        const apiRequest = fetch(endpoint).then((res) => res.json().then((elem) => {
-            console.log(endpoint);
-            return elem;
-
-        }));
-
-        return apiRequest;
+        
     }
 
     function trocarCorStatus(sim, resultadoAPIstatus) {
@@ -60,12 +69,12 @@ window.addEventListener('load', () => {
         divSection.innerHTML = ''; //Limpando a sessão para criar outra;
 
         const resultado = await chamarAPI(contadorPag, nome);
+        if (!resultado) return;
         resultado.results.forEach(res => criarCards(res));
-        
+    
         totalPaginas = resultado.info.pages; //Pega a informação de quantas paginas tem na API
         document.querySelector('.total-paginas').textContent = `Página ${contadorPagina} de ${totalPaginas}`; //Mostra em que pagina está e a quantidade de páginas.
     }
-
 
     //Avançar ou Retroceder as paginas
     let contadorPagina = 1; 

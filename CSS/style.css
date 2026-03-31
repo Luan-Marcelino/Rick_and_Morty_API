@@ -12,6 +12,7 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    
 }
 
 
@@ -58,7 +59,7 @@ body {
         box-shadow:  -4px 4px 1px rgb(15, 32, 33), -3px 3px 15px black, -2px 2px 10px greenyellow;
         
         &:active {
-            transition: tramsform 0.2s ease-in-out;
+            transition: transform 0.2s ease-in-out;
             transform: translate(-2px, 1px);
             box-shadow:  -1px 1px 1px rgb(15, 32, 33), -1px 1px 15px black, -2px 2px 15px greenyellow;
         }
@@ -85,7 +86,7 @@ hr {
     gap: 30px;
     flex-wrap: wrap;
     padding-top: 80px;
-
+    
     .card {
         background-color: black;
         width: 200px;
@@ -176,4 +177,150 @@ footer {
     hr {
         width: 80%;
     }
+}
+
+/* Estilização das informações dos personagens*/
+.infos-personagem {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left:50%;
+    transform: translate(-50%, -20%);
+    max-width: 700px;
+    width: 60%;
+    
+    
+    
+    z-index: 5;
+    background-color: #000c28;
+    border: 5px solid yellowgreen;
+    border-radius: 20px;
+    box-shadow: 0 0 10px yellowgreen;
+    
+    .modal {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .btn-fechar-infos {
+            position: absolute;
+            top: -30px;
+            right: -20px;
+            background-color: white;
+            border-radius: 100%;
+            width: 50px;
+            aspect-ratio: 1/1;
+            border: none;
+            font-size: 2em;
+            font-weight: 800;
+            color: green;
+            cursor: pointer;
+
+            &:hover {
+                filter: drop-shadow(0 0 10px yellowgreen);
+            }
+        }
+
+        .infos-conteudo {
+            color: white;
+            display: flex;
+            flex-direction: row;
+            
+            gap: 20px;
+            padding: 15px;
+            
+            
+            .infos-principal {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                padding: 10px;
+
+                img {
+                    width: 300px;
+                    margin-bottom: 10px;
+                    border-radius: 15px;
+                }
+
+                .infos_de_status {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    justify-content: start;
+                    align-items: center;
+                    
+                        .fa-circle {
+                            color: green;
+                            font-size: 12px;
+                            margin-right: -6px;
+                        }
+
+                        p:not(:last-child) {
+                            border-right: 1px solid rgba(255, 255, 255, 0.5);
+                            padding-right: 10px;
+                            
+                        }
+                }
+            }
+                
+            .origem {
+                
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                label {
+                    font-size: 1.5em;
+                    font-weight: 700;
+                    color: darkgrey;
+                }
+
+                p {
+                    margin-top: -12px;
+                    font-size: 2em;
+                    
+                }
+
+                #todos-eps {
+                    width: 100%;
+                    height: 150px;
+                    overflow-y: scroll;
+                    overflow-x: hidden;
+                    background-color: #052777;
+                    padding: 10px;
+                    gap: 5px;
+
+                    &::-webkit-scrollbar {
+                        width: 5px;
+                    }
+
+                    &::-webkit-scrollbar-track {
+                        background: yellowgreen;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background-color: green;
+                        border-radius: 20px;
+                        
+                    }
+
+                    p {
+                        font-size: 20px;
+                        margin-top: 0;
+                        padding-top: 5px;
+                        
+                    }
+                }
+                    
+            }
+            
+            
+        }
+    }
+
+}
+
+.show {
+    display: block;
 }

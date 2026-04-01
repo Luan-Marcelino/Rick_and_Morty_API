@@ -98,7 +98,7 @@ hr {
         justify-content: space-around;
         padding: 10px;
         color: #ffff;
-
+        text-transform: capitalize;
 
         &:hover {
             transition: 0.3s ease-in-out;
@@ -224,7 +224,7 @@ footer {
             
             gap: 20px;
             padding: 15px;
-            
+            text-transform: capitalize;
             
             .infos-principal {
                 display: flex;

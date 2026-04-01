@@ -3,13 +3,19 @@
 
 **Link do Site**: https://rick-and-morty-api-virid-nu.vercel.app/
 
-O objetivo desse projeto é consumir uma API e manipular os dados na DOM, mostrando as informações iniciais como:
+O objetivo desse projeto é praticar e consumir uma API para manipular os dados na DOM, mostrando as informações iniciais como:
 
 * **Nome**
 * **Local de Origem**
-* **Status**:
+* **Status**
 
-Também é possível pesquisar um nome de personagem na barra de pesquisa, para ver as informações completas.
+Também é possivel ver mais informações selecionando o personagem, abrirá um modal com outras informações do personagem como:
+* **Lugar de Origem**
+* **Localização Atual**
+* **Quantidade de episódios que o personagem participa**
+* **Lista dos episódios que o personagem participa**
+
+Também é possível pesquisar um nome de personagem na barra de pesquisa, vai retornar todo personagem que tiver o nome digitado.
 
 ## Passos Concluidos
 
@@ -17,7 +23,8 @@ Também é possível pesquisar um nome de personagem na barra de pesquisa, para 
 :white_check_mark: Consumir a API. <br/>
 :white_check_mark: Fazer o circulo de status mudar de cor. <br/>
 :white_check_mark: Fazer a barra de pesquisa funcionar. <br/>
-:white_large_square: Criar página de descrição do personagem. <br/>
+:white_check_mark: Criar página de descrição do personagem. <br/>
+:white_large_square: Fazer os Media Queries.<br/>
 
 ## Esquema das páginas
 
@@ -27,3 +34,5 @@ Também é possível pesquisar um nome de personagem na barra de pesquisa, para 
 ![**Quando realiza a pesquisa**](Assets/img-exemplo-pesquisa.png)
 **Quantidade de páginas do resultado**, cada página tem 20 cards.
 ![**Quantidade de páginas do resultado**](Assets/img-quantidade-de-paginas.png)
+**Página de descrição do personagem**.
+![**Modal de descrição do personagem**](Assets/img-modal-informacoes.png)

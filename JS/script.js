@@ -2,7 +2,7 @@ window.addEventListener('load', () => {
 
     //Para validar a quantidade de páginas que tem na API
     let totalPaginas;
-    
+    const body = document.querySelector('body');
 
     const divSection = document.querySelector('.section-cards');
     const modal = document.querySelector('.modal');
@@ -145,6 +145,7 @@ window.addEventListener('load', () => {
     
     function abrirFechar() {
         info_conteudo.classList.add('show');
+        ativarOverlayEstilos();
     }
 
 
@@ -207,12 +208,39 @@ window.addEventListener('load', () => {
         trocarCorStatus(simbolo, resultado.status);
 
         infos_principais.querySelector('.btn-fechar-infos').addEventListener('click', () => {
-        info_conteudo.classList.remove('show');
-    })
+            info_conteudo.classList.remove('show');
+            desativarOverlayEstilos()
+        });
         
     }
-    
-    
 
+    function ativarOverlayEstilos() {
+        body.style.background = 'rgba(0,0,0, 0.9)';
+        document.querySelector('.campo-pesquisa').style.opacity = '10%';
+        document.querySelector('hr').style.opacity = '10%';
+        document.querySelectorAll('.card').forEach(e => e.style.opacity = '10%');
+        document.querySelectorAll('img').forEach(e => e.style.opacity = '10%');
+        document.querySelector('.btn-tras-frente').style.opacity = '10%';
+        document.querySelector('footer').style.opacity = '10%';
+        document.querySelector('.total-paginas').style.opacity = '10%';
+    }
+
+    function desativarOverlayEstilos() {
+        body.style.background = 'linear-gradient(#001f65, #6895fd)';
+        document.querySelector('.campo-pesquisa').style.opacity = '100%';
+        document.querySelector('hr').style.opacity = '100%';
+        document.querySelectorAll('.card').forEach(e => e.style.opacity = '100%');
+        document.querySelectorAll('img').forEach(e => e.style.opacity = '100%');
+        document.querySelector('.btn-tras-frente').style.opacity = '100%';
+        document.querySelector('footer').style.opacity = '100%';       
+        document.querySelector('.total-paginas').style.opacity = '100%'; 
+    }
+
+    window.addEventListener('click', (e) => {
+        
+        if(e.target === body) {
+            info_conteudo.classList.remove('show');
+            desativarOverlayEstilos();
+        }       
+    })
 });
-

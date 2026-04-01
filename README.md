@@ -32,7 +32,8 @@ Também é possível pesquisar um nome de personagem na barra de pesquisa, vai r
 ![Imagem Inicial.](Assets/img-exemplo-inicial.png)
 **Quando realizar a pesquisa**, digitando o nome do personagem e apertando ENTER, vai retornar todos os cards que tem esse nome.
 ![**Quando realiza a pesquisa**](Assets/img-exemplo-pesquisa.png)
-**Quantidade de páginas do resultado**, cada página tem 20 cards.
-![**Quantidade de páginas do resultado**](Assets/img-quantidade-de-paginas.png)
 **Página de descrição do personagem**.
 ![**Modal de descrição do personagem**](Assets/img-modal-informacoes.png)
+**Quantidade de páginas do resultado**, cada página tem 20 cards.
+![**Quantidade de páginas do resultado**](Assets/img-quantidade-de-paginas.png)
+

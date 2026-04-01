@@ -186,7 +186,7 @@ footer {
     left:50%;
     transform: translate(-50%, -20%);
     max-width: 700px;
-    width: clamp(100px ,60%, 700px);
+    width: 60%;
     z-index: 5;
     background-color: #000c28;
     border: 5px solid yellowgreen;
@@ -211,7 +211,7 @@ footer {
             font-weight: 800;
             color: green;
             cursor: pointer;
-
+            
             &:hover {
                 filter: drop-shadow(0 0 10px yellowgreen);
             }
@@ -283,6 +283,7 @@ footer {
                     height: 150px;
                     overflow-y: scroll;
                     overflow-x: hidden;
+                    border-radius: 15px;
                     background-color: #052777;
                     padding: 10px;
                     gap: 5px;
@@ -319,4 +320,62 @@ footer {
 
 .show {
     display: block;
+}
+
+@media (max-width: 500px) {
+    .infos-personagem {
+        width: 95%;
+        height: 90%;
+        overflow-y: scroll;
+        top: 50%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+
+        .modal {
+            
+            
+            .btn-fechar-infos {
+                width: 35px;
+                font-size: 20px;
+                top: 1px;
+                right: 1px;
+                
+            }
+
+            .infos-conteudo {
+                flex-direction: column;
+                
+                .infos-principal {
+                    
+
+                    img {
+                        width: 200px;
+                    }
+
+                    .infos_de_status {
+                        font-size: 20px;
+                        margin-bottom: 10px;
+                    }
+                }
+
+
+            }
+
+            .origem {
+                justify-content: center;
+                align-items: center;
+                font-size: 12px;
+
+                p {
+                    text-align: center;
+                }
+                
+              
+            }
+
+
+        }
+    }
+
+
 }

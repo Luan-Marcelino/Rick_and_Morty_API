@@ -24,16 +24,19 @@ Também é possível pesquisar um nome de personagem na barra de pesquisa, vai r
 :white_check_mark: Fazer o circulo de status mudar de cor. <br/>
 :white_check_mark: Fazer a barra de pesquisa funcionar. <br/>
 :white_check_mark: Criar página de descrição do personagem. <br/>
-:white_large_square: Fazer os Media Queries.<br/>
+:white_check_mark: Fazer os Media Queries.<br/>
 
 ## Esquema das páginas
 
 **Página Inicial :**
-![Imagem Inicial.](Assets/img-exemplo-inicial.png)
+![Imagem Inicial.](Assets/img-exemplo-inicial.png)<br>
 **Quando realizar a pesquisa**, digitando o nome do personagem e apertando ENTER, vai retornar todos os cards que tem esse nome.
-![**Quando realiza a pesquisa**](Assets/img-exemplo-pesquisa.png)
+![**Quando realiza a pesquisa**](Assets/img-exemplo-pesquisa.png)<br>
 **Página de descrição do personagem**.
-![**Modal de descrição do personagem**](Assets/img-modal-informacoes.png)
+![**Modal de descrição do personagem**](Assets/img-modal-informacoes.png)<br>
+**Modal responsivo para dispositivos móveis**
+![**Modal responsivo para dispositivos móveis**](Assets/img-media-responsivo.png)<br>
 **Quantidade de páginas do resultado**, cada página tem 20 cards.
-![**Quantidade de páginas do resultado**](Assets/img-quantidade-de-paginas.png)
+![**Quantidade de páginas do resultado**](Assets/img-quantidade-de-paginas.png)<br>
+
 

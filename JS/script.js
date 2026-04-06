@@ -88,7 +88,7 @@ window.addEventListener('load', () => {
         
         totalPaginas = resultado.info.pages; //Pega a informação de quantas paginas tem na API
 
-        document.querySelector('.total-paginas').textContent = `Página ${contadorPagina} de ${totalPaginas}`; //Mostra em que pagina está e a quantidade de páginas.
+        document.querySelector('.total-paginas').innerHTML = `Página <span>${contadorPagina}</span> de ${totalPaginas}`; //Mostra em que pagina está e a quantidade de páginas.
     }
 
     //Avançar ou Retroceder as paginas
